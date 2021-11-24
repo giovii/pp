@@ -45,7 +45,7 @@ return [
         'fields'         => [
             'id'                       => 'ID',
             'id_helper'                => ' ',
-            'name'                     => 'Name',
+            'name'                     => 'Nome',
             'name_helper'              => ' ',
             'email'                    => 'Email',
             'email_helper'             => ' ',

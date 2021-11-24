@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\ExtraBonuController;
 use App\Http\Controllers\Admin\FaqCategoryController;
 use App\Http\Controllers\Admin\FaqQuestionController;
-use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ManualBonuController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductCategoryController;
@@ -17,12 +16,12 @@ use App\Http\Controllers\Auth\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/login');
+Route::view('/', 'welcome');
 
 Auth::routes(['register' => true]);
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth','admin']], function () {
+    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
 
     // Permissions
     Route::resource('permissions', PermissionController::class, ['except' => ['store', 'update', 'destroy']]);
@@ -70,4 +69,9 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth'
     if (file_exists(app_path('Http/Controllers/Auth/UserProfileController.php'))) {
         Route::get('/', [UserProfileController::class, 'show'])->name('show');
     }
+});
+
+
+Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth']], function () {
+    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
 });
