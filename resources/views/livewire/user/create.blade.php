@@ -85,6 +85,16 @@
             {{ trans('cruds.user.fields.investor_type_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('user.refcode') ? 'invalid' : '' }}">
+        <label class="form-label" for="refcode">{{ trans('cruds.user.fields.refcode') }}</label>
+        <input class="form-control" type="text" name="refcode" id="refcode" wire:model.defer="user.refcode">
+        <div class="validation-message">
+            {{ $errors->first('user.refcode') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.user.fields.refcode_helper') }}
+        </div>
+    </div>
     <div class="form-group {{ $errors->has('user.address') ? 'invalid' : '' }}">
         <label class="form-label" for="address">{{ trans('cruds.user.fields.address') }}</label>
         <input class="form-control" type="text" name="address" id="address" wire:model.defer="user.address">
@@ -133,6 +143,26 @@
         </div>
         <div class="help-block">
             {{ trans('cruds.user.fields.vat_helper') }}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('user.referrer') ? 'invalid' : '' }}">
+        <label class="form-label" for="referrer">{{ trans('cruds.user.fields.referrer') }}</label>
+        <input class="form-control" type="number" name="referrer" id="referrer" wire:model.defer="user.referrer" step="1">
+        <div class="validation-message">
+            {{ $errors->first('user.referrer') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.user.fields.referrer_helper') }}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('user.referred_id') ? 'invalid' : '' }}">
+        <label class="form-label" for="referred">{{ trans('cruds.user.fields.referred') }}</label>
+        <x-select-list class="form-control" id="referred" name="referred" :options="$this->listsForFields['referred']" wire:model="user.referred_id" />
+        <div class="validation-message">
+            {{ $errors->first('user.referred_id') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.user.fields.referred_helper') }}
         </div>
     </div>
 

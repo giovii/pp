@@ -23,6 +23,7 @@ class UsersTableSeeder extends Seeder
                 'city'           => '',
                 'zip_code'       => '',
                 'vat'            => '',
+                'refcode'        => '',
             ],
         ];
 

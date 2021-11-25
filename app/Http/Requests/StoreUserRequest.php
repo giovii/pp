@@ -81,6 +81,21 @@ class StoreUserRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'referrer' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'nullable',
+            ],
+            'referred_id' => [
+                'integer',
+                'exists:users,id',
+                'nullable',
+            ],
+            'refcode' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

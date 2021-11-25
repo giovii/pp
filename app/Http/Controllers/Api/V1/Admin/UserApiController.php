@@ -20,7 +20,7 @@ class UserApiController extends Controller
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new UserResource(User::with(['roles'])->get());
+        return new UserResource(User::with(['roles', 'referred'])->get());
     }
 
     public function store(StoreUserRequest $request)
@@ -40,7 +40,7 @@ class UserApiController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new UserResource($user->load(['roles']));
+        return new UserResource($user->load(['roles', 'referred']));
     }
 
     public function update(UpdateUserRequest $request, User $user)

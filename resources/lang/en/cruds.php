@@ -81,6 +81,12 @@ return [
             'documents_helper'         => ' ',
             'vat'                      => 'Vat',
             'vat_helper'               => ' ',
+            'referrer'                 => 'Referrer',
+            'referrer_helper'          => ' ',
+            'referred'                 => 'Referred',
+            'referred_helper'          => ' ',
+            'refcode'                  => 'Refcode',
+            'refcode_helper'           => ' ',
         ],
     ],
     'productManagement' => [

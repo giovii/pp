@@ -19,10 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('locale')->nullable();
             $table->string('phone_number')->nullable()->unique();
             $table->string('investor_type')->nullable();
+            $table->string('refcode')->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('zip_code')->nullable();
             $table->string('vat')->nullable();
+            $table->integer('referrer')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

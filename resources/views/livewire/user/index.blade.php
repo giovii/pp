@@ -21,7 +21,9 @@
             @endif
 
 
-
+            @can('user_create')
+                <x-csv-import route="{{ route('admin.users.csv.store') }}" />
+            @endcan
 
         </div>
         <div class="w-full sm:w-1/2 sm:text-right">
@@ -45,27 +47,11 @@
                             @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.name') }}
-                            @include('components.table.sort', ['field' => 'name'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.user.fields.surname') }}
-                            @include('components.table.sort', ['field' => 'surname'])
-                        </th>
-                        <th>
                             {{ trans('cruds.user.fields.email') }}
                             @include('components.table.sort', ['field' => 'email'])
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.email_verified_at') }}
-                            @include('components.table.sort', ['field' => 'email_verified_at'])
-                        </th>
-                        <th>
                             {{ trans('cruds.user.fields.roles') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.user.fields.locale') }}
-                            @include('components.table.sort', ['field' => 'locale'])
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.phone_number') }}
@@ -76,19 +62,12 @@
                             @include('components.table.sort', ['field' => 'investor_type'])
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.address') }}
-                            @include('components.table.sort', ['field' => 'address'])
+                            {{ trans('cruds.user.fields.refcode') }}
+                            @include('components.table.sort', ['field' => 'refcode'])
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.city') }}
                             @include('components.table.sort', ['field' => 'city'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.user.fields.zip_code') }}
-                            @include('components.table.sort', ['field' => 'zip_code'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.user.fields.documents') }}
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.vat') }}
@@ -108,12 +87,6 @@
                                 {{ $user->id }}
                             </td>
                             <td>
-                                {{ $user->name }}
-                            </td>
-                            <td>
-                                {{ $user->surname }}
-                            </td>
-                            <td>
                                 <a class="link-light-blue" href="mailto:{{ $user->email }}">
                                     <i class="far fa-envelope fa-fw">
                                     </i>
@@ -121,15 +94,9 @@
                                 </a>
                             </td>
                             <td>
-                                {{ $user->email_verified_at }}
-                            </td>
-                            <td>
                                 @foreach($user->roles as $key => $entry)
                                     <span class="badge badge-relationship">{{ $entry->title }}</span>
                                 @endforeach
-                            </td>
-                            <td>
-                                {{ $user->locale }}
                             </td>
                             <td>
                                 {{ $user->phone_number }}
@@ -138,20 +105,10 @@
                                 {{ $user->investor_type_label }}
                             </td>
                             <td>
-                                {{ $user->address }}
+                                {{ $user->refcode }}
                             </td>
                             <td>
                                 {{ $user->city }}
-                            </td>
-                            <td>
-                                {{ $user->zip_code }}
-                            </td>
-                            <td>
-                                @foreach($user->documents as $key => $entry)
-                                    <a class="link-photo" href="{{ $entry['url'] }}">
-                                        <img src="{{ $entry['thumbnail'] }}" alt="{{ $entry['name'] }}" title="{{ $entry['name'] }}">
-                                    </a>
-                                @endforeach
                             </td>
                             <td>
                                 {{ $user->vat }}
