@@ -45,7 +45,7 @@ return [
         'fields'         => [
             'id'                       => 'ID',
             'id_helper'                => ' ',
-            'name'                     => 'Nome',
+            'name'                     => 'Name',
             'name_helper'              => ' ',
             'email'                    => 'Email',
             'email_helper'             => ' ',
@@ -81,6 +81,12 @@ return [
             'documents_helper'         => ' ',
             'vat'                      => 'Vat',
             'vat_helper'               => ' ',
+            'referrer'                 => 'Referrer',
+            'referrer_helper'          => ' ',
+            'referred'                 => 'Referred',
+            'referred_helper'          => ' ',
+            'refcode'                  => 'Refcode',
+            'refcode_helper'           => ' ',
         ],
     ],
     'productManagement' => [

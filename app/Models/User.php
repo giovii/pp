@@ -33,35 +33,29 @@ class User extends Authenticatable implements HasMedia
 
     public $table = 'users';
 
+    public static $search = [
+        'referrer',
+    ];
+
     public $orderable = [
         'id',
-        'name',
-        'surname',
         'email',
-        'email_verified_at',
-        'locale',
         'phone_number',
         'investor_type',
-        'address',
         'city',
-        'zip_code',
         'vat',
+        'refcode',
     ];
 
     public $filterable = [
         'id',
-        'name',
-        'surname',
         'email',
-        'email_verified_at',
         'roles.title',
-        'locale',
         'phone_number',
         'investor_type',
-        'address',
         'city',
-        'zip_code',
         'vat',
+        'refcode',
     ];
 
     protected $appends = [
@@ -92,6 +86,9 @@ class User extends Authenticatable implements HasMedia
         'city',
         'zip_code',
         'vat',
+        'referrer',
+        'referred_id',
+        'refcode',
     ];
 
     public function getIsAdminAttribute()
@@ -159,6 +156,11 @@ class User extends Authenticatable implements HasMedia
 
             return $media;
         });
+    }
+
+    public function referred()
+    {
+        return $this->belongsTo(User::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

@@ -69,7 +69,7 @@ class Index extends Component
 
     public function render()
     {
-        $query = User::with(['roles'])->advancedFilter([
+        $query = User::with(['roles', 'referred'])->advancedFilter([
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,

@@ -73,14 +73,6 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.locale') }}
-                            </th>
-                            <td>
-                                {{ $user->locale }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
                                 {{ trans('cruds.user.fields.phone_number') }}
                             </th>
                             <td>
@@ -93,6 +85,14 @@
                             </th>
                             <td>
                                 {{ $user->investor_type_label }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.user.fields.refcode') }}
+                            </th>
+                            <td>
+                                {{ $user->refcode }}
                             </td>
                         </tr>
                         <tr>
@@ -137,6 +137,24 @@
                             </th>
                             <td>
                                 {{ $user->vat }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.user.fields.referrer') }}
+                            </th>
+                            <td>
+                                {{ $user->referrer }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.user.fields.referred') }}
+                            </th>
+                            <td>
+                                @if($user->referred)
+                                    <span class="badge badge-relationship">{{ $user->referred->referrer ?? '' }}</span>
+                                @endif
                             </td>
                         </tr>
                     </tbody>

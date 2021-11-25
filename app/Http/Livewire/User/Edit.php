@@ -108,6 +108,10 @@ class Edit extends Component
                 'nullable',
                 'in:' . implode(',', array_keys($this->listsForFields['investor_type'])),
             ],
+            'user.refcode' => [
+                'string',
+                'nullable',
+            ],
             'user.address' => [
                 'string',
                 'nullable',
@@ -132,6 +136,17 @@ class Edit extends Component
                 'string',
                 'nullable',
             ],
+            'user.referrer' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'nullable',
+            ],
+            'user.referred_id' => [
+                'integer',
+                'exists:users,id',
+                'nullable',
+            ],
         ];
     }
 
@@ -139,6 +154,7 @@ class Edit extends Component
     {
         $this->listsForFields['roles']         = Role::pluck('title', 'id')->toArray();
         $this->listsForFields['investor_type'] = $this->user::INVESTOR_TYPE_SELECT;
+        $this->listsForFields['referred']      = User::pluck('referrer', 'id')->toArray();
     }
 
     protected function syncMedia(): void
